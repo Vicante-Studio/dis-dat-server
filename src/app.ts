@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 
 app.use(cors({
   origin: (origin, callback) => {
-     console.log('🌍 Incoming Origin:', origin) //Log the oriin that's being used
+     console.log('🌍 Incoming Origin:', origin) //Log the origin that's being used
     if (
       !origin ||
       allowedOrigins.includes(origin) ||
