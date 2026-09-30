@@ -1,11 +1,10 @@
 import express from 'express';
+import { handleLoginUser, handleRegisterUser } from '../controllers/auth.controller.js';
 
-const router = express.Router();
+const authRouter = express.Router();
 
-router.post('/register', (req, res) => {
-    const data = req.body;
-    res.json({message: 'Auth Route is active, yessss', data})
-})
+authRouter.post('/register', handleRegisterUser)
+authRouter.post('/login', handleLoginUser)
 
 
-export default router;
+export default authRouter;
