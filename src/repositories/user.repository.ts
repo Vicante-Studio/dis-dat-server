@@ -1,8 +1,8 @@
 import { supabaseAdmin } from "../config/supabase.js";
 import { ConflictError } from "../errors/serverError.js";
-import type { newUserProfile } from "../types/auth.types.js";
+import type { NewUserProfile } from "../types/auth.types.js";
 
-export async function insertAuthUser(profile: newUserProfile){
+export async function insertAuthUser(profile: NewUserProfile){
     const { error } = await supabaseAdmin.from("users").insert(profile);
 
     if(error) {
