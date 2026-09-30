@@ -1,7 +1,7 @@
 import type { AuthError } from "@supabase/supabase-js";
 import { supabaseAuth } from "../config/supabase.js";
 import { AppError, BadRequestError, ConflictError, ForbiddenError, ServiceUnavailableError, UnauthorizedError } from "../errors/serverError.js";
-import type { supabaseSignUpData } from "../types/auth.types.js";
+import type { SupabaseSignUpData } from "../types/auth.types.js";
 
 function toAppError(error: AuthError): AppError {
   const status = error.status ?? 0
@@ -16,7 +16,7 @@ function toAppError(error: AuthError): AppError {
   return new ServiceUnavailableError()
 }
 
-export async function createAuthUser ({ email, password }: supabaseSignUpData){
+export async function createAuthUser ({ email, password }: SupabaseSignUpData){
     const { data, error } = await supabaseAuth.auth.signUp({email, password}); //Sign up with email and password
 
     if (error) throw toAppError(error);
